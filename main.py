@@ -92,8 +92,11 @@ async def check_all(interaction: discord.Interaction, user: discord.User):
     result = [f"{d}요일: {schedule.get(d, '❌ 없음')}" for d in days]
     await interaction.response.send_message(f"{user.display_name}님의 전체 스케줄:\n" + "\n".join(result))
 
-with open("token.txt", "r") as f:
-    token = f.read().strip()
 
+import os
+
+token = os.getenv("DISCORD_TOKEN")
 client.run(token)
+
+
 
